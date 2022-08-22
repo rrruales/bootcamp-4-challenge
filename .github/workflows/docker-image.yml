@@ -31,3 +31,15 @@ jobs:
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+  
+  deploy_heroku:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bootcamp-frontend" #Must be unique in Heroku
+          heroku_email: "richard2861@hotmail.com"
+          usedocker: true
