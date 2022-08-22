@@ -4,9 +4,9 @@ RUN apt update -y && apt upgrade -y && apt install -y nodejs
 
 RUN apt install -y npm 
 
-WORKDIR /tmp/app
+WORKDIR /usr/src/app
 
-COPY . /tmp/app/
+COPY ./ /usr/src/app
 
 RUN npm install
 
